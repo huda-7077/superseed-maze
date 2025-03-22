@@ -2,6 +2,10 @@
 
 A web-based maze game where players navigate through a maze to reach the goal using arrow keys (on desktop) or on-screen controls (on mobile). The game features multiple difficulty levels, a timer, and a responsive design with a dynamic background that transitions on load.
 
+## Preview
+
+![Game Preview](preview.png)
+
 ## Features
 
 - **Multiple Levels**: Choose from various difficulty levels:
