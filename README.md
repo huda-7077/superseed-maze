@@ -56,6 +56,10 @@ superseed-maze-challenge/
 - **CSS3** - Styling and responsive design
 - **JavaScript (Vanilla JS)** - Game logic and UI interactions
 
+## AI-Generated Project
+
+This game was entirely created with AI assistance. You can check the development process here: [Grok 3 Conversation](https://x.com/i/grok/share/Rr3XT2tdNsDE5piHMNx1ghrt9)
+
 ## License
 
 This project is open-source. Feel free to use and modify it!
