@@ -63,7 +63,7 @@ body {
 
 .player {
     /* Seed icon */
-    background: url('superseed-icon-bold.svg') no-repeat center;
+    background: url('superseed-icon-bold.svg') #00ffcc no-repeat center;
     background-size: contain;
 }
 
