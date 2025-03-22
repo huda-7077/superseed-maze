@@ -1,0 +1,249 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background: url('superseed.svg') #1a1a1a no-repeat center center fixed;
+    background-size: 100% 100%; /* Fit exactly to screen */
+    font-family: Arial, sans-serif;
+    overflow: auto;
+}
+
+#game-container {
+    text-align: center;
+    color: #00ffcc;
+    padding: 10px;
+    width: 100%;
+    max-width: 1200px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    overflow-x: hidden;
+    background: rgba(26, 26, 26, 0.7);
+    border-radius: 10px;
+    animation: fadeIn 1s ease-in-out forwards; /* Fade in automatically */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+/* Class to trigger fade-in when page loads */
+#game-container.loaded {
+    opacity: 1; /* Fully visible */
+}
+
+#maze {
+    display: grid;
+    gap: 1px;
+    background-color: #333; /* Dark gray maze background */
+    padding: 1px;
+    border: 2px solid #00ffcc;
+    border-radius: 5px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.mini-icon {
+    width: 24px;
+    height: 24px;
+}   
+
+.cell {
+    background-color: #555; /* Medium gray walls */
+}
+
+.path {
+    background-color: #1a1a1a; /* Near-black paths */
+}
+
+.player {
+    /* Seed icon */
+    background: url('superseed-icon-bold.svg') no-repeat center;
+    background-size: contain;
+}
+
+.goal {
+    /* Flag icon */
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%2300ff00"><path d="M4 3h2v18H4V3zm3 0h11l-1.5 6L18 15H7V3z"/></svg>') no-repeat center;
+    background-size: contain;
+}
+
+button, select {
+    margin-top: 10px;
+    margin-left: 5px;
+    padding: 8px 16px;
+    font-size: clamp(12px, 4vw, 14px);
+    background-color: #00ffcc; /* Cyan buttons */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #1a1a1a; /* Dark text */
+}
+
+button:hover, select:hover {
+    background-color: #ff007a; /* Pink hover */
+    color: #fff;
+}
+
+#timer {
+    margin-top: 10px;
+    font-size: clamp(14px, 5vw, 18px);
+    color: #ff007a; /* Pink timer */
+}
+
+p {
+    font-size: clamp(12px, 4vw, 16px);
+}
+
+h1 {
+    font-size: clamp(20px, 6vw, 32px);
+}
+
+/* Arrow controls for mobile */
+#arrow-controls {
+    margin-top: 15px;
+    display: none;
+}
+
+.arrow-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    margin: 5px;
+    padding: 0;
+    background-color: #00ffcc;
+    color: #1a1a1a;
+}
+
+.arrow-btn:hover {
+    background-color: #ff007a;
+    color: #fff;
+}
+
+.mobile-only {
+    display: none;
+}
+
+.pc-only {
+    display: inline;
+}
+
+/* Popup styling */
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #333; /* Dark gray */
+    color: #00ffcc; /* Cyan text */
+    padding: 20px;
+    border: 2px solid #ff007a; /* Pink border */
+    border-radius: 5px;
+    text-align: center;
+    z-index: 1000;
+}
+
+.popup p {
+    margin: 0 0 10px 0;
+    font-size: clamp(14px, 4vw, 18px);
+}
+
+.popup button {
+    background-color: #ff007a; /* Pink button */
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.popup button:hover {
+    background-color: #00ffcc; /* Cyan hover */
+    color: #1a1a1a;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    body {
+        /* Duplicate superseed.svg: one at top, one at bottom */
+        background: 
+            url('superseed.svg') no-repeat center top fixed, /* Top SVG */
+            url('superseed.svg') no-repeat center bottom fixed, /* Bottom SVG */
+            #1a1a1a; /* Background color */
+        background-size: 100% 50%; /* Each SVG takes half the height */
+    }
+    #game-container {
+        padding: 5px;
+    }
+    #maze {
+        width: calc(100vw - 20px);
+        max-width: calc(100vw - 20px);
+        margin: 0 auto;
+    }
+    .mobile-only {
+        display: block;
+    }
+    .pc-only {
+        display: none;
+    }
+    #arrow-controls {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: 160px;
+        margin: 10px auto;
+    }
+    .arrow-btn {
+        width: clamp(30px, 10vw, 40px);
+        height: clamp(30px, 10vw, 40px);
+        font-size: clamp(12px, 3vw, 18px);
+    }
+    .controls {
+        display: block; /* Keep dropdown alone in mobile */
+    }
+    .mobile-btn {
+        display: inline-block; /* Show original buttons */
+    }
+    .top-btn {
+        display: none; /* Hide top buttons */
+    }
+}
+
+@media (min-width: 601px) {
+    #game-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+    .controls {
+        display: flex;
+        align-items: center;
+        gap: 10px; /* Space between elements */
+    }
+    .level-select {
+        margin-top: 0; /* Align with dropdown */
+    }
+    .mobile-btn {
+        display: none; /* Hide original buttons below maze */
+    }
+    .top-btn {
+        display: inline-block; /* Show top buttons */
+        margin-top: 0; /* Align with dropdown */
+        margin-left: 10px;
+    }
+    #timer {
+        margin-top: 15px; /* Space below controls */
+    }
+    #arrow-controls {
+        display: none; /* Hide arrow controls on PC */
+    }
+}
