@@ -32,7 +32,7 @@ body {
         opacity: 1;
     }
 }
-/* Class to trigger fade-in when page loads */
+/* Class to trigger fade-in when page loads (optional, kept for flexibility) */
 #game-container.loaded {
     opacity: 1; /* Fully visible */
 }
@@ -62,13 +62,11 @@ body {
 }
 
 .player {
-    /* Seed icon */
     background: url('superseed-icon-bold.svg') #00ffcc no-repeat center;
     background-size: contain;
 }
 
 .goal {
-    /* Flag icon */
     background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%2300ff00"><path d="M4 3h2v18H4V3zm3 0h11l-1.5 6L18 15H7V3z"/></svg>') no-repeat center;
     background-size: contain;
 }
@@ -107,17 +105,7 @@ h1 {
 /* Arrow controls for mobile */
 #arrow-controls {
     margin-top: 15px;
-    display: none;
-}
-
-.arrow-btn {
-    width: 50px;
-    height: 50px;
-    font-size: 20px;
-    margin: 5px;
-    padding: 0;
-    background-color: #00ffcc;
-    color: #1a1a1a;
+    display: none; /* Hidden by default, only shown in mobile */
 }
 
 .arrow-btn:hover {
@@ -171,12 +159,11 @@ h1 {
 /* Responsive adjustments */
 @media (max-width: 600px) {
     body {
-        /* Duplicate superseed.svg: one at top, one at bottom */
         background: 
-            url('superseed.svg') no-repeat center top fixed, /* Top SVG */
-            url('superseed.svg') no-repeat center bottom fixed, /* Bottom SVG */
-            #1a1a1a; /* Background color */
-        background-size: 100% 50%; /* Each SVG takes half the height */
+            url('superseed.svg') no-repeat center top fixed,
+            url('superseed.svg') no-repeat center bottom fixed,
+            #1a1a1a;
+        background-size: 100% 50%;
     }
     #game-container {
         padding: 5px;
@@ -201,18 +188,22 @@ h1 {
         margin: 10px auto;
     }
     .arrow-btn {
-        width: clamp(30px, 10vw, 40px);
-        height: clamp(30px, 10vw, 40px);
-        font-size: clamp(12px, 3vw, 18px);
+        width: clamp(40px, 10vw, 60px); /* Increased max from 40px to 60px */
+        height: clamp(40px, 10vw, 60px); /* Increased max from 40px to 60px */
+        font-size: clamp(16px, 3vw, 24px); /* Increased from 12px-18px to 16px-24px */
+        margin: 5px;
+        padding: 0;
+        background-color: #00ffcc;
+        color: #1a1a1a;
     }
     .controls {
-        display: block; /* Keep dropdown alone in mobile */
+        display: block;
     }
     .mobile-btn {
-        display: inline-block; /* Show original buttons */
+        display: inline-block;
     }
     .top-btn {
-        display: none; /* Hide top buttons */
+        display: none;
     }
 }
 
@@ -227,23 +218,23 @@ h1 {
     .controls {
         display: flex;
         align-items: center;
-        gap: 10px; /* Space between elements */
+        gap: 10px;
     }
     .level-select {
-        margin-top: 0; /* Align with dropdown */
+        margin-top: 0;
     }
     .mobile-btn {
-        display: none; /* Hide original buttons below maze */
+        display: none;
     }
     .top-btn {
-        display: inline-block; /* Show top buttons */
-        margin-top: 0; /* Align with dropdown */
+        display: inline-block;
+        margin-top: 0;
         margin-left: 10px;
     }
     #timer {
-        margin-top: 15px; /* Space below controls */
+        margin-top: 15px;
     }
     #arrow-controls {
-        display: none; /* Hide arrow controls on PC */
+        display: none; /* Explicitly hidden on desktop */
     }
 }
